@@ -1,12 +1,42 @@
-<!DOCTYPE html>
-<html lang="de-DE">
-  <head>
-    <meta charset="UTF-8">
-    <title>Monstersalat.de by tordans</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-Hallo Welt
-  
-  </body>
-</html>
+---
+layout: default
+title: test in index
+---
+
+<div class="row">
+
+  <section class="col-md-12">
+    {% for tag in site.homepage.ordered_tags_lists.primary %}
+      <h2>{{ tag }}</h2>
+      <div class="row">
+        {% for produkt in site.produkte %}
+          {% for product_tag in produkt.tags %}
+            {% if product_tag == tag %}
+              <a class="col-md-6" href="{{ produkt.url }}" title="{{ produkt.title }}">
+                <img src="/produkte/{{ produkt.image_path }}/main.jpeg" style="width:100%" title="{{ produkt.title }}">
+              </a>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </section>
+
+  <section class="col-md-12">
+    {% for tag in site.homepage.ordered_tags_lists.secondary %}
+      <h2>{{ tag }}</h2>
+      <div class="row">
+        {% for produkt in site.produkte %}
+          {% for product_tag in produkt.tags %}
+            {% if product_tag == tag %}
+              <a class="col-md-2" href="{{ produkt.url }}">
+                <img src="/produkte/{{ produkt.image_path }}/main.jpeg" style="width:100%" title="{{ produkt.title }}">
+              </a>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </section>
+
+</div>

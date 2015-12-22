@@ -1,14 +1,49 @@
 # Site settings
 # Help: http://jekyllrb.com/docs/configuration/
 
-email: todo
+title: "Monstersalat – Liebevolle Illustrationen, Papeterie und Schmuck"
+description: "todo description"
+email: todo email
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://www.monstersalat.de" # the base hostname & protocol for your site
-exclude: ['README.md', 'LICENSE']
+exclude: ['README.md', 'LICENSE', 'TODO.md']
 Include: ['.htaccess']
 timezone: Europe/Berlin
 
+# Homepage Config:
+# Anlässe / Occasions
+homepage:
+  ordered_tags_lists:
+    primary:
+      - Weihnachten
+      - Geburt
+    secondary:
+      - Hochzeit
+      # - Frühling
+      # - Für Firmen
+      - Grußkarten
+
+# Collections:
+# http://jekyllrb.com/docs/collections/
+collections:
+  produkte:
+    output: true
+
+# Defaults:
+# http://jekyllrb.com/docs/configuration/#front-matter-defaults
 defaults:
   -
+    scope:
+      path: ""
+      type: ""
     values:
-      layout: "default"
+      layout: default
+  -
+    scope:
+      path: ""
+      type: produkte
+    values:
+      layout: produkte
+
+sass:
+  style: compressed

@@ -1,0 +1,22 @@
+<footer class="row">
+
+  <div class="col-md-4">
+    <ul>
+      <li>{{ site.title }}</li>
+      <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+    </ul>
+  </div>
+
+  <div class="col-md-4">
+    <ul>
+      <li>
+        <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-md-4">
+    <p>{{ site.description }}</p>
+  </div>
+
+</footer>
