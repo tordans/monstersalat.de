@@ -11,6 +11,12 @@
 
 # Links
 
+- Admin UI https://github.com/jekyll/jekyll-admin
+
+- Sitemap? https://github.com/jekyll/jekyll-sitemap
+
+- Maybe Seo Plugin https://github.com/jekyll/jekyll-seo-tag
+
 - könnte gute tipps seite sein http://jekyll.tips/
 
 - Formular erstellen https://getsimpleform.com/

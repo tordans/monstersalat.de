@@ -1,22 +1,26 @@
-<header class="row">
-
-  <div class="col-md-12">
-
-    <nav class="site-nav">
-        <a href="{{ site.baseurl }}/">{{ site.title }}</a>
-
-<!--
-        <a href="/" class="menu-icon">monstersalat.de</a>
-
-      <div class="trigger">
-        {% for my_page in site.pages %}
-          {% if my_page.title %}
-            <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
-          {% endif %}
-        {% endfor %}
-      </div> -->
-    </nav>
-
+<header class="navbar">
+  <div class="container">
+    <div class="row main-body">
+      <div class="col-md-1"></div>
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+          <img alt="monstersalat Logo" src="/assets/monstersalat-logo.png" height="55">
+        </a>
+        <ul class="nav nav-pills">
+          <li {% if current[1] == nil  %}class='active'{% endif %} >
+            <a href="/">Start</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-
 </header>
+<!--
+<div class="trigger">
+  {% for my_page in site.pages %}
+    {% if my_page.title %}
+      <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
+    {% endif %}
+  {% endfor %}
+</div>
+-->

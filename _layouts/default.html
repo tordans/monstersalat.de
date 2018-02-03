@@ -1,18 +1,19 @@
+{% assign current = page.url | downcase | split: '/' %}
+
 <!DOCTYPE html>
 <html>
 
-  {% include head.html %}
+{% include head.html %}
 
-  <body>
+<body>
 
-    <div class="container">
-      {% include header.html %}
+{% include header.html %}
 
-      {{ content }}
+<div class="container">
+  {{ content }}
+</div>
 
-      {% include footer.html %}
-    </div>
+{% include footer.html %}
 
-  </body>
-
+</body>
 </html>

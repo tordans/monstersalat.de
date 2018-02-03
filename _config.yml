@@ -1,14 +1,15 @@
 # Site settings
 # Help: http://jekyllrb.com/docs/configuration/
 
-title: "Monstersalat – Liebevolle Illustrationen, Papeterie und Schmuck"
-description: "todo description"
-email: todo email
+title: Monstersalat – Liebevolle Illustrationen, Papeterie und Schmuck
+description: TODO
+email: hallo@monstersalat.de
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://www.monstersalat.de" # the base hostname & protocol for your site
+url: http://www.monstersalat.de
 exclude: ['README.md', 'LICENSE', 'TODO.md']
 Include: ['.htaccess']
 timezone: Europe/Berlin
+encoding: utf-8
 
 # Homepage Config:
 # Anlässe / Occasions
@@ -46,4 +47,4 @@ defaults:
       layout: produkte
 
 sass:
-  style: compressed
+  # style: compressed # turn on on production, not while developing
