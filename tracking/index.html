@@ -16,7 +16,7 @@ title: 'Monstersalat – Where is my package'
 
       <div class="jumbotron">
         <h1 class="display-4">Hi!<br>Let's see where your package is …</h1>
-        <div id="my-template-text" class="lead mt-4"></div>
+        <div id="include-template-here" class="lead mt-4"></div>
         <hr class="my-4">
         <p>
           All the best,
@@ -63,20 +63,17 @@ title: 'Monstersalat – Where is my package'
   var country  = url.searchParams.get('country') || 'missing';
 
   // Mini Template Engine
-  // https://jonsuh.com/blog/javascript-templating-without-a-library/
-
-  // Template
+  //   https://jonsuh.com/blog/javascript-templating-without-a-library/
   var templateHtml = document.getElementById("my-template").innerHTML;
   var outputHTML = "";
   var trackingUrlDE  = "https://www.deutschepost.de/sendung/simpleQuery.html?locale=en_GB&form.einlieferungsdatum_monat="+month+"&form.einlieferungsdatum_tag="+day+"&form.einlieferungsdatum_jahr="+year+"&form.sendungsnummer="+tracking;
   var trackingUrlUSA = "https://tools.usps.com/go/TrackConfirmAction?tLabels="+tracking+"%2C";
 
-  // Render template
   outputHTML = templateHtml.replace(/%%tracking%%/g, tracking)
                            .replace(/%%trackingUrlDE%%/g, trackingUrlDE)
                            .replace(/%%trackingUrlUSA%%/g, trackingUrlUSA)
                            .replace(/%%date%%/g, date)
                            .replace(/%%country%%/g, country);
 
-  document.getElementById("my-template-text").innerHTML = outputHTML;
+  document.getElementById("include-template-here").innerHTML = outputHTML;
 </script>
