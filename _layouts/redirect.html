@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<!-- Generated {{ 'now' | date: "%F %T" }} -->
+<meta http-equiv="Refresh" content="0; url={{ page.redirect_url }}" />
+<link rel="canonical" href="{{ page.redirect_url }}"/>
+<title>{{ page.title | default:'Monstersalat' }}</title>
+</head>
+<body>
+{{ content }}
+<a href="{{ page.redirect_url }}">{{ page.redirect_url }}</a>
+<script>location='{{ page.redirect_url }}'</script>
+</body>
+</html>
