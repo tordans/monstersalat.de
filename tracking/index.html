@@ -1,0 +1,85 @@
+---
+layout: default
+title: 'Monstersalat – Where is my package'
+---
+
+<!-- https://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="https://www.etsy.com/shop/Monstersalat">Monstersalat</a>
+</nav>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm">
+
+      <div class="jumbotron">
+        <h1 class="display-4">Hi!<br>Let's see where your package is …</h1>
+        <div id="my-template-text" class="lead mt-4"></div>
+        <hr class="my-4">
+        <p>
+          All the best,
+          <br>
+          Maren
+        </p>
+      </div>
+
+      <p>Contact me at <a href="mailto:hello@monstersalat.de">hello@monstersalat.de</a>
+
+    </div>
+  </div>
+</div>
+
+<script id="my-template" type="text/template">
+  <p>
+    Your tracking code is <code>%%tracking%%</code>.
+    <br>
+    I shipped it on <code>%%date%%</code> <span class="text-secondary">d/m/y</span>.
+  </p>
+  <hr class="my-4">
+  <p>
+    To track your package in Germany:
+    <br>
+    <a class="btn btn-primary btn-lg" href="%%trackingUrlDE%%">Go to deutschepost.de</a>
+    and click "Find my shipment".
+  </p>
+  <hr class="my-4">
+  <p>
+    To track your package in the USA:
+    <br>
+    <a class="btn btn-primary btn-lg" href="%%trackingUrlUSA%%">Go to usps.com</a>
+  </p>
+</script>
+
+<script>
+  // URL Params
+  var url      = new URL(window.location.href);
+  var tracking = url.searchParams.get('tracking');
+  var date     = url.searchParams.get('date');
+  var day      = date.split('.')[0];
+  var month    = date.split('.')[1];
+  var year     = date.split('.')[2];
+  var country  = url.searchParams.get('country');
+  console.log(tracking, date, country);
+
+  // Mini Template Engine
+  // https://jonsuh.com/blog/javascript-templating-without-a-library/
+
+  // Cache template, get contents
+  var myTemplate = document.getElementById("my-template");
+  var templateHtml = myTemplate.innerHTML;
+  var outputHTML = "";
+
+  var trackingUrlDE  = "https://www.deutschepost.de/sendung/simpleQuery.html?locale=en_GB&form.einlieferungsdatum_monat="+month+"&form.einlieferungsdatum_tag="+day+"&form.einlieferungsdatum_jahr="+year+"&form.sendungsnummer="+tracking;
+  var trackingUrlUSA = "https://tools.usps.com/go/TrackConfirmAction?tLabels="+tracking+"%2C";
+
+  // Render template
+  outputHTML = templateHtml.replace(/%%tracking%%/g, tracking)
+                           .replace(/%%trackingUrlDE%%/g, trackingUrlDE)
+                           .replace(/%%trackingUrlUSA%%/g, trackingUrlUSA)
+                           .replace(/%%date%%/g, date)
+                           .replace(/%%country%%/g, country);
+
+  document.getElementById("my-template-text").innerHTML = outputHTML;
+</script>
