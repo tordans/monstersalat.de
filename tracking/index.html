@@ -55,22 +55,19 @@ title: 'Monstersalat – Where is my package'
 <script>
   // URL Params
   var url      = new URL(window.location.href);
-  var tracking = url.searchParams.get('tracking');
-  var date     = url.searchParams.get('date');
-  var day      = date.split('.')[0];
-  var month    = date.split('.')[1];
-  var year     = date.split('.')[2];
-  var country  = url.searchParams.get('country');
-  console.log(tracking, date, country);
+  var tracking = url.searchParams.get('tracking') || 'missing';
+  var date     = url.searchParams.get('date') || 'missing';
+  var day      = date ? date.split('.')[0] : '';
+  var month    = date ? date.split('.')[1] : '';
+  var year     = date ? date.split('.')[2] : '';
+  var country  = url.searchParams.get('country') || 'missing';
 
   // Mini Template Engine
   // https://jonsuh.com/blog/javascript-templating-without-a-library/
 
-  // Cache template, get contents
-  var myTemplate = document.getElementById("my-template");
-  var templateHtml = myTemplate.innerHTML;
+  // Template
+  var templateHtml = document.getElementById("my-template").innerHTML;
   var outputHTML = "";
-
   var trackingUrlDE  = "https://www.deutschepost.de/sendung/simpleQuery.html?locale=en_GB&form.einlieferungsdatum_monat="+month+"&form.einlieferungsdatum_tag="+day+"&form.einlieferungsdatum_jahr="+year+"&form.sendungsnummer="+tracking;
   var trackingUrlUSA = "https://tools.usps.com/go/TrackConfirmAction?tLabels="+tracking+"%2C";
 
